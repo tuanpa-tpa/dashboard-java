@@ -15,6 +15,11 @@ import javax.persistence.*;
 @Table(name = "product_type")
 public class ProductType {
 
+    public ProductType(String name, Boolean isDeleted) {
+        this.name = name;
+        this.isDeleted = isDeleted;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "product_type_id")

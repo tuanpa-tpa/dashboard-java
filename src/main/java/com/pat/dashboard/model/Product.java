@@ -16,6 +16,16 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Table(name = "product")
 public class Product {
+
+    public Product(Integer productTypeId, String name, String brand, String madein, float price, Boolean isDeleted) {
+        this.productTypeId = productTypeId;
+        this.name = name;
+        this.brand = brand;
+        this.madein = madein;
+        this.price = price;
+        this.isDeleted = isDeleted;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "product_id")
