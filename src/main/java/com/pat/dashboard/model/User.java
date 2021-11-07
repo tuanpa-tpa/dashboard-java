@@ -1,10 +1,12 @@
 package com.pat.dashboard.model;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.Collection;
-import java.util.List;
 
 @NoArgsConstructor
 @Getter
@@ -44,15 +46,12 @@ public class User {
     @Column(name = "active")
     private Boolean active;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
             name = "users_roles",
             joinColumns = @JoinColumn(
-                    name = "user_id", referencedColumnName = "user_id"
-            ),
+                    name = "user_id", referencedColumnName = "user_id"),
             inverseJoinColumns = @JoinColumn(
-                    name = "role_id", referencedColumnName = "role_id"
-            )
-    )
+                    name = "role_id", referencedColumnName = "role_id"))
     private Collection<Role> roles;
 }
