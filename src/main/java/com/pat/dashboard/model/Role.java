@@ -7,7 +7,6 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
-@AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
@@ -16,6 +15,7 @@ import javax.persistence.*;
 public class Role {
 
     public Role(String name) {
+        super();
         this.name = name;
     }
 
