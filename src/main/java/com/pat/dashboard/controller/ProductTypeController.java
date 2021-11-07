@@ -20,20 +20,20 @@ public class ProductTypeController {
 
     @GetMapping("/add")
     public String addProductType(ProductType productType, Model model) {
-        model.addAttribute("productType", productType);
+        model.addAttribute("producttype", productType);
         return "/admin/producttype/add-edit-producttype";
     }
 
     @GetMapping("/edit/{id}")
     public String editProductType(@PathVariable("id") long id, Model model) {
         ProductType productType = productTypeService.get(id);
-        model.addAttribute("productType", productType);
+        model.addAttribute("producttype", productType);
         return "/admin/producttype/add-edit-producttype";
     }
 
     @PostMapping("/save")
     public String saveProductType(@Valid @ModelAttribute("productType") ProductType productType, BindingResult result, Model model) {
-        model.addAttribute("productType", productType);
+        model.addAttribute("producttype", productType);
         if (result.hasErrors()) {
             return "/admin/producttype/add-edit-producttype";
         }
@@ -50,7 +50,7 @@ public class ProductTypeController {
     @GetMapping("/list")
     public String listProductType(Model model) {
         List<ProductType> productTypes = productTypeService.findAll();
-        model.addAttribute("productTypes", productTypes);
+        model.addAttribute("listProductTypes", productTypes);
         return "/admin/producttype/list-producttype";
     }
 }

@@ -63,7 +63,7 @@ public class ProductController {
         List<ProductType> productTypes = productTypeService.findAll();
         model.addAttribute("productTypes", productTypes);
         List<Product> products = productService.findAll();
-        model.addAttribute("product", products);
+        model.addAttribute("listProducts", products);
         return "/admin/product/list-product";
     }
 }
