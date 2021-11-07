@@ -3,7 +3,6 @@ package com.pat.dashboard.controller;
 import com.pat.dashboard.model.User;
 import com.pat.dashboard.service.IUserService;
 import com.pat.dashboard.web.dto.UserRegistrationDto;
-import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

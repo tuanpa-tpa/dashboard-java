@@ -4,7 +4,6 @@ import com.pat.dashboard.model.Product;
 import com.pat.dashboard.model.ProductType;
 import com.pat.dashboard.service.ProductService;
 import com.pat.dashboard.service.ProductTypeService;
-import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
-@AllArgsConstructor
 @Controller
 @RequestMapping("/product")
 public class ProductController {
@@ -26,7 +24,7 @@ public class ProductController {
     private ProductTypeService productTypeService;
 
     @GetMapping("/add")
-    public String add(Product product, Model model) {
+    public String addProduct(Product product, Model model) {
         model.addAttribute("product", product);
         List<ProductType> productTypes = productTypeService.findAll();
         model.addAttribute("productTypes", productTypes);
@@ -34,7 +32,7 @@ public class ProductController {
     }
 
     @GetMapping("/edit/{id}")
-    public String edit(@PathVariable("id") long id, Model model) {
+    public String editProduct(@PathVariable("id") long id, Model model) {
         Product product = productService.get(id);
         model.addAttribute("product", product);
         List<ProductType> productTypes = productTypeService.findAll();
@@ -61,7 +59,7 @@ public class ProductController {
     }
 
     @GetMapping("/list")
-    public String listAll(Model model) {
+    public String listProducts(Model model) {
         List<ProductType> productTypes = productTypeService.findAll();
         model.addAttribute("productTypes", productTypes);
         List<Product> products = productService.findAll();
