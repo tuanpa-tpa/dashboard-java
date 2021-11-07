@@ -7,18 +7,12 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
-@AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 @Entity
 @Table(name = "product_type")
 public class ProductType {
-
-    public ProductType(String name, Boolean isDeleted) {
-        this.name = name;
-        this.isDeleted = isDeleted;
-    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

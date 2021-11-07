@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import javax.validation.Valid;
 
 @Controller
-@AllArgsConstructor
 public class LoginController {
 
     @Autowired
@@ -23,7 +22,8 @@ public class LoginController {
 
 
     @GetMapping("/login")
-    public String login() {
+    public String login(Model model) {
+
         return "admin/auth/login";
     }
 
@@ -31,17 +31,19 @@ public class LoginController {
     public String register(Model model) {
         UserRegistrationDto userRegistrationDto = new UserRegistrationDto();
         model.addAttribute("userRegistrationDto", userRegistrationDto);
+
         return "admin/auth/register";
     }
-
     @PostMapping("/register")
     public String registerUserAccount(@Valid @ModelAttribute("userRegistrationDto") UserRegistrationDto userRegistrationDto, BindingResult result, Model model) {
         model.addAttribute("userRegistrationDto", userRegistrationDto);
-        User user = userService.findByUsername(userRegistrationDto.getUsername());
-        if (user != null) {
+
+        User userExists = userService.findByUsername(userRegistrationDto.getUserName());
+
+        if (userExists != null) {
             return "redirect:/register?username";
         }
-        if (result.hasErrors()) {
+        if(result.hasErrors()){
             return "admin/auth/register";
         }
         userService.save(userRegistrationDto);
